@@ -7,7 +7,7 @@ pipeline
         {
             steps 
             {
-                git branch: 'main', url: 'https://github.com/Surja07/python.git'
+                git branch: 'main', url: 'https://github.com/Bhavya0729/python.git'
             }
         }
         
@@ -15,32 +15,30 @@ pipeline
         {
             steps 
             {
-                  sh 'python3 Python.py'
+                  sh 'python3 python.py'
             }
         }
-        
-            stage ('continous deployment')
+        stage ('continous deployment')
          {
           steps
           {
-              sh 'scp "/var/lib/jenkins/workspace/Declaritive pipeline2/Python.py" ubuntu@172.31.9.223:/var/lib/tomcat10/webapps/'
+              sh 'scp "/var/lib/jenkins/workspace/declarativepipeline-python/python.py" ubuntu@172.31.44.38:/home/ubuntu/tom'
           }
       }
-      
-        stage ('continous testing')
+       stage ('continous testing')
          {
              steps
              {
-                  sh 'python3 "/var/lib/jenkins/workspace/Declaritive pipeline2/Python.py"'
+                  sh 'python3 "/var/lib/jenkins/workspace/declarativepipeline-python/python.py"'
              }
          }
-         
-        stage ('continous release')
+         stage ('continous release')
                {
                    steps
                    {
-                 sh 'scp "/var/lib/jenkins/workspace/Declaritive pipeline2/Python.py" ubuntu@172.31.12.169:/var/lib/tomcat10/webapps/'
+                       sh 'scp "/var/lib/jenkins/workspace/declarativepipeline-python/python.py" ubuntu@172.31.42.163:/home/ubuntu/tom'
                    }
               }
-     }
+    }
 }
+    
